@@ -5,6 +5,18 @@
 - Use `/api/generate` and `/api/chat` from Python.
 - Implement **tool-calling (agentic)** with a minimal loop.
 - Add a tiny **RAG** example using local text.
+- Summarize local **PDF documents** on-device with Ollama.
+
+---
+
+## Demo Index
+- **01 — Generate**: Single-shot via `/api/generate`
+- **02 — Chat (basic)**: Multi-turn via `/api/chat`
+- **03 — Agentic Tool-Calling**: Function/tools loop
+- **04 — Tiny Local RAG**: Embeddings + retrieval + context stuffing
+- **05 — Local Doc Summarizer**: Summarize PDFs entirely on-device
+
+---
 
 ## Prereqs
 - Ollama installed and running (`ollama -v`), default host `http://localhost:11434`.
@@ -12,21 +24,3 @@
 - Install deps:
 ```bash
 pip install -r requirements.txt
-```
-
-## Quickstart
-```bash
-python examples/01_generate.py
-python examples/02_chat_basic.py
-python examples/03_chat_tools_agent.py
-python examples/04_rag_minimal.py
-```
-
-## Models
-Pull one or more before running examples:
-```bash
-ollama pull llama3.2:latest
-ollama pull llama3.1:8b-instruct-q4_K_M
-ollama pull mistral
-ollama pull nomic-embed-text
-```
