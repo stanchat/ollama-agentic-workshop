@@ -1,0 +1,7 @@
+CommunityInsight.AI helps cities, school districts, nonprofits, and coalitions find and track grants faster.
+Typical steps:
+1) Define topic filters (education, housing, health).
+2) Use federal sources (Grants.gov Search2), add state/local portals.
+3) Save candidates to watchlist; set alerts for updates.
+4) Track deadlines, eligibility, and award ranges.
+5) Share candidates with your team and record notes/outcomes.
