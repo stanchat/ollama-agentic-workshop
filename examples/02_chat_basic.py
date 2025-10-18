@@ -1,13 +1,26 @@
 import requests
+import json
 
-CHAT = "http://localhost:11434/api/chat"
-MODEL = "llama3.2:latest"
+OLLAMA = "http://localhost:11434/api/chat"
 
-messages = [
-    {"role": "system", "content": "You are a helpful AI for software demos."},
-    {"role": "user", "content": "Explain retrieval-augmented generation in 2 sentences."},
-]
+payload = {
+    "model": "llama3.2:latest",
+    "messages": [
+        {"role": "user", "content": "Explain zero-shot vs few-shot learning"}
+    ],
+    "tools": []
+}
 
-r = requests.post(CHAT, json={"model": MODEL, "messages": messages}, timeout=60)
-r.raise_for_status()
-print(r.json().get("message", {}).get("content", "").strip())
+r = requests.post(OLLAMA, json=payload)
+
+# Parse streamed JSON lines response
+responses = []
+
+for line in r.text.strip().split('\n'):
+    data = json.loads(line)
+    # Extract message content from the nested structure or fallback to empty string
+    message_content = data.get("message", {}).get("content", "")
+    responses.append(message_content)
+
+full_response = "".join(responses)
+print(full_response.strip())
